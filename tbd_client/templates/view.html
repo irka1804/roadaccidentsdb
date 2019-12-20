@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Road Accidents DB</title>
+</head>
+<body class="container">
+
+<a href="http://localhost:8000/" style="padding-left:32px"><button> К запросам </button></a>
+
+<h4 style="padding-left:32px"> {{ query }}
+</h4>
+
+<table>
+    {% for name in columns %}
+        <th style="padding-left:32px">{{ name }}</th>
+    {% endfor %}
+    {% for i in row%}
+        <tr>
+            {% for j in i %}
+            <td style="padding-left:32px">{{ j }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+</body>

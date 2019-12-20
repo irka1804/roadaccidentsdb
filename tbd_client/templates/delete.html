@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Road Accidents DB</title>
+</head>
+<body class="container">
+	<h2>Delete record from table</h2>
+	<form method="POST" action="delete">
+	{% csrf_token %}
+        <p>
+            <label>Введите table</label><br>
+            <input type="text" name="table" />
+        </p>
+        <p>
+            <label>Введите id</label><br>
+            <input type="text" name="id" />
+        </p>
+        <input type="submit" value="УДАЛИТЬ" >
+    	</form>
+</body>

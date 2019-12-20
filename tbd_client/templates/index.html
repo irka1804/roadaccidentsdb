@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Road Accidents DB</title>
+</head>
+<body class="container">
+{% with base="http://localhost:8000/" %}
+	<h4>Choose query</h4>
+	{% csrf_token %}
+    <table>
+        <tr>
+            <td><a href="{{ base }}select1"><p style="text-align: center"><button style="width:100px">select1</button></a></td>
+            <td><a href="{{ base }}select2"><p style="text-align: center"><button style="width:100px">select2</button></a></td>
+            <td><a href="{{ base }}select3"><p style="text-align: center"><button style="width:100px">select3</button></a></td>
+            <td><a href="{{ base }}select4"><p style="text-align: center"><button style="width:100px">select4</button></a></td>
+            <td><a href="{{ base }}select5"><p style="text-align: center"><button style="width:100px">select5</button></a></td>
+        </tr>
+        <tr>
+            <td><a href="{{ base }}window1"><p style="text-align: center"><button style="width:100px">window1</button></a></td>
+            <td><a href="{{ base }}window2"><p style="text-align: center"><button style="width:100px">window2</button></a></td>
+            <td><a href="{{ base }}window3"><p style="text-align: center"><button style="width:100px">window3</button></a></td>
+            <td><a href="{{ base }}window4"><p style="text-align: center"><button style="width:100px">window4</button></a></td>
+            <td><a href="{{ base }}window5"><p style="text-align: center"><button style="width:100px">window5</button></a></td>
+        </tr>
+        <tr>
+            <td><a href="{{ base }}analitic1"><p style="text-align: center"><button style="width:100px">analitic1</button></a></td>
+            <td><a href="{{ base }}analitic2"><p style="text-align: center"><button style="width:100px">analitic2</button></a></td>
+            <td><a href="{{ base }}analitic3"><p style="text-align: center"><button style="width:100px">analitic3</button></a></td>
+            <td><a href="{{ base }}analitic4"><p style="text-align: center"><button style="width:100px">analitic4</button></a></td>
+            <td><a href="{{ base }}analitic5"><p style="text-align: center"><button style="width:100px">analitic5</button></a></td>
+        </tr>
+        <tr>
+            <td><a href="{{ base }}view1"><p style="text-align: center"><button style="width:100px">view1</button></a></td>
+            <td><a href="{{ base }}view2"><p style="text-align: center"><button style="width:100px">view2</button></a></td>
+            <td><a href="{{ base }}view3"><p style="text-align: center"><button style="width:100px">view3</button></a></td>
+            <td><a href="{{ base }}view4"><p style="text-align: center"><button style="width:100px">view4</button></a></td>
+            <td><a href="{{ base }}view5"><p style="text-align: center"><button style="width:100px">view5</button></a></td>
+        </tr>
+        <tr>
+            <td><a href="{{ base }}procedure1"><p style="text-align: center"><button style="width:100px">procedure1</button></a></td>
+            <td><a href="{{ base }}procedure2"><p style="text-align: center"><button style="width:100px">procedure2</button></a></td>
+            <td><a href="{{ base }}procedure3"><p style="text-align: center"><button style="width:100px">procedure3</button></a></td>
+            <td><a href="{{ base }}procedure4"><p style="text-align: center"><button style="width:100px">procedure4</button></a></td>
+            <td><a href="{{ base }}procedure5"><p style="text-align: center"><button style="width:100px">procedure5</button></a></td>
+        </tr>
+        <tr>
+            <td><a href="{{ base }}update"><p style="text-align: center"><button style="width:100px">update</button></a></td>
+            <td><a href="{{ base }}create"><p style="text-align: center"><button style="width:100px">create</button></a></td>
+            <td><a href="{{ base }}delete"><p style="text-align: center"><button style="width:100px">delete</button></a></td>
+
+        </tr>
+    </table>
+{% endwith %}
+</body>

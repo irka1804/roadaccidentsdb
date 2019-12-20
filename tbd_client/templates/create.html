@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Road Accidents DB</title>
+</head>
+<body class="container">
+	<h2>Create record to accidents</h2>
+	<form method="POST" action="create_accidents">
+	{% csrf_token %}
+        <p>
+            <label>Введите accident_index</label><br>
+            <input type="text" name="accident_index" />
+        </p>
+        <p>
+            <label>Введите accident_severity</label><br>
+            <input type="text" name="accident_severity" />
+        </p>
+	<p>
+            <label>Введите weather_conditions</label><br>
+            <input type="text" name="weather_conditions" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    	</form>
+
+<h2>Create record to date</h2>
+<form method="POST" action="create_date">
+	{% csrf_token %}
+        <p>
+            <label>Введите day of week</label><br>
+            <input type="text" name="day" />
+        </p>
+        <p>
+            <label>Введите time</label><br>
+            <input type="text" name="time" />
+        </p>
+	<p>
+            <label>Введите date</label><br>
+            <input type="text" name="date" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    	</form>
+
+<h2>Create record to location</h2>
+<form method="POST" action="create_location">
+	{% csrf_token %}
+        <p>
+            <label>Введите longitude</label><br>
+            <input type="text" name="long" />
+        </p>
+        <p>
+            <label>Введите latitude</label><br>
+            <input type="text" name="lat" />
+        </p>
+	<p>
+            <label>Введите urban or rural area</label><br>
+            <input type="text" name="area" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    	</form>
+
+<h2>Create record to casualty</h2>
+<form method="POST" action="create_casualty">
+	{% csrf_token %}
+        <p>
+            <label>Введите Casualty_Severity</label><br>
+            <input type="text" name="cs" />
+        </p>
+        <p>
+            <label>Введите type</label><br>
+            <input type="text" name="ct" />
+        </p>
+	<p>
+            <label>Введите age</label><br>
+            <input type="text" name="age" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    	</form>
+
+<h2>Create record to vehicles</h2>
+<form method="POST" action="create_vehicles">
+	{% csrf_token %}
+        <p>
+            <label>Введите type</label><br>
+            <input type="text" name="type" />
+        </p>
+        <p>
+            <label>Введите left hand driver</label><br>
+            <input type="text" name="hand" />
+        </p>
+	<p>
+            <label>Введите age</label><br>
+            <input type="text" name="age" />
+        </p>
+	<p>
+            <label>Введите manoeuvre</label><br>
+            <input type="text" name="man" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    	</form>
+
+
+</body>
+</html>
