@@ -311,14 +311,15 @@ def view5(r):
 def procedure1(r):
     cursor = connection.cursor()
 
-    cursor.execute("create procedure get_veh_info(type varchar(45)) "
+    cursor.execute("DROP PROCEDURE IF EXISTS get_veh_info;"
+                   "create procedure get_veh_info(type varchar(45)) "
                    "begin select vehicle_type, age_of_vehicle, casualty_type, "
                    "age_of_casualty, longitude, latitude, date, time, weather_conditions "
                    "from vehicles, casualty, accidents, date, location "
                    "where date.id = vehicles.id and date.id = accidents.id and date.id = casualty.id "
                    "and casualty.id = location.id and  INSTR(vehicle_type, type); "
-                   "call get_veh_info('bus');"
-                    )
+                   "end;")
+    cursor.execute("call get_veh_info('bus');")
 
     row = cursor.fetchall()
 
@@ -327,17 +328,15 @@ def procedure1(r):
 def procedure2(r):
     cursor = connection.cursor()
 
-    cursor.execute("delimiter // "
+    cursor.execute("DROP PROCEDURE IF EXISTS gismeteo;"
                    "create procedure gismeteo(year_i INT, weather varchar(45))"
-                   " begin select vehicle_type, age_of_vehicle, date, latitude, longitude, weather_conditions "
-                   "from vehicles, accidents, location, date"
-                   " where accidents.id = vehicles.id and location.id = accidents.id "
+                   "begin select vehicle_type, age_of_vehicle, date, latitude, longitude, weather_conditions "
+                   "from vehicles, accidents, location, date "
+                   "where accidents.id = vehicles.id and location.id = accidents.id "
                    "and date.id = accidents.id and age_of_vehicle = year_i and "
                    "INSTR(weather_conditions, weather); "
-                   "end //"
-                   "delimiter //"
-                   "call gismeteo(5, 'rain');"
-                   "end //")
+                   "end;")
+    cursor.execute("call gismeteo(5, 'rain');")
 
     row = cursor.fetchall()
 
@@ -346,12 +345,12 @@ def procedure2(r):
 def procedure3(r):
     cursor = connection.cursor()
 
-    cursor.execute("delimiter //"
+    cursor.execute("DROP PROCEDURE IF EXISTS max_age;"
                    "create procedure max_age(year_i INT) "
                    "begin select max(age_of_casualty) from casualty, date "
                    "where date.id = casualty.id and year(date) = year_i; "
-                   "end //"
-                   "call max_age(2005)")
+                   "end;")
+    cursor.execute("call max_age(2005)")
 
     row = cursor.fetchall()
 
@@ -360,12 +359,11 @@ def procedure3(r):
 def procedure4(r):
     cursor = connection.cursor()
 
-    cursor.execute("delimeter //"
-                   "create procedure am_dtp(x float, y float) "
+    cursor.execute("create procedure am_dtp(x float, y float) "
                    "begin select count(*) from location "
                    "where longitude <= x + 0.02 and longitude >= x - 0.02 and latitude <= y + 0.02 and latitude >= y - 0.02;"
-                   " end //"
-                   "call am_dtp(-0.19, 51.48);")
+                   "end;")
+    cursor.execute("call am_dtp(-0.19, 51.48);")
 
     row = cursor.fetchall()
 
@@ -374,8 +372,16 @@ def procedure4(r):
 def procedure5(r):
     cursor = connection.cursor()
 
-    cursor.execute("select * from bad_story limit 10;")
+    cursor.execute("DROP PROCEDURE IF EXISTS get_young_vehicle;"
+                   "create procedure get_young_vehicle(type varchar(45)) "
+                   "begin select vehicle_type, age_of_vehicle, casualty_type, "
+                   "age_of_casualty, longitude, latitude, date, time, weather_conditions "
+                   "from vehicles, casualty, accidents, date, location "
+                   "where date.id = vehicles.id and date.id = accidents.id and date.id = casualty.id and age_of_vehicle < 10 "
+                   "and casualty.id = location.id and INSTR(vehicle_type, type); "
+                   "end;")
+    cursor.execute("call get_young_vehicle('motorcycle');")
 
     row = cursor.fetchall()
 
-    return render(r, 'view.html', {'row': row, 'columns': [], 'query': ''})
+    return render(r, 'view.html', {'row': row, 'columns': [], 'query': 'Вывести машины конкретной марки с пробегом меньше 10 лет'})
