@@ -38,4 +38,10 @@ urlpatterns = [
     path('view4', views.view4),
     path('view5', views.view5),
 
+    path('procedure1', views.procedure1),
+    path('procedure2', views.procedure2),
+    path('procedure3', views.procedure3),
+    path('procedure4', views.procedure4),
+    path('procedure5', views.procedure5),
+
 ]

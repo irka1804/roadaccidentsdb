@@ -309,7 +309,7 @@ def view5(r):
 def procedure1(r):
     cursor = connection.cursor()
 
-    cursor.execute("delimiter //"
+    cursor.execute("delimiter // "
                    "create procedure get_veh_info(type varchar(45)) "
                    "begin select vehicle_type, age_of_vehicle, casualty_type, "
                    "age_of_casualty, longitude, latitude, date, time, weather_conditions "
@@ -320,9 +320,60 @@ def procedure1(r):
                    "delimiter; "
                    "call get_veh_info('bus');")
 
+    row = cursor.fetchall()
+
+    return render(r, 'view.html', {'row': row, 'columns': [], 'query': 'Поиск важной информации о конкретном виде транспорта.'})
+
+def procedure2(r):
+    cursor = connection.cursor()
+
+    cursor.execute("delimiter // "
+                   "create procedure gismeteo(year_i INT, weather varchar(45))"
+                   " begin select vehicle_type, age_of_vehicle, date, latitude, longitude, weather_conditions "
+                   "from vehicles, accidents, location, date"
+                   " where accidents.id = vehicles.id and location.id = accidents.id "
+                   "and date.id = accidents.id and age_of_vehicle = year_i and "
+                   "INSTR(weather_conditions, weather); "
+                   "end //"
+                   "call gismeteo(5, 'rain');")
+
+    row = cursor.fetchall()
+
+    return render(r, 'view.html', {'row': row, 'columns': [], 'query': 'Найти все места, где произошла авария с машиной конкретного года, и заданной погодой'})
+
+def procedure3(r):
+    cursor = connection.cursor()
+
+    cursor.execute("delimiter //"
+                   "create procedure max_age(year_i INT) "
+                   "begin select max(age_of_casualty) from casualty, date "
+                   "where date.id = casualty.id and year(date) = year_i; "
+                   "end //"
+                   "call max_age(2005)")
+
+    row = cursor.fetchall()
+
+    return render(r, 'view.html', {'row': row, 'columns': [], 'query': 'Максимальный возраст жертвы в N году'})
+
+def procedure4(r):
+    cursor = connection.cursor()
+
+    cursor.execute("delimeter //"
+                   "create procedure am_dtp(x float, y float) "
+                   "begin select count(*) from location "
+                   "where longitude <= x + 0.02 and longitude >= x - 0.02 and latitude <= y + 0.02 and latitude >= y - 0.02;"
+                   " end //"
+                   "call am_dtp(-0.19, 51.48);")
+
+    row = cursor.fetchall()
+
+    return render(r, 'view.html', {'row': row, 'columns': [], 'query': 'кол-во аварий по данным координатам (в том месте)'})
+
+def procedure5(r):
+    cursor = connection.cursor()
+
     cursor.execute("select * from bad_story limit 10;")
 
     row = cursor.fetchall()
 
     return render(r, 'view.html', {'row': row, 'columns': [], 'query': ''})
-
