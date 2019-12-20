@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a4e9f4f9-f10f-4c73-b02c-bc3d3c7c318a" name="Default Changelist" comment="" />
+    <list default="true" id="a4e9f4f9-f10f-4c73-b02c-bc3d3c7c318a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/tbd_client/client/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tbd_client/client/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tbd_client/client/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="302" column="55" lean-forward="true" selection-start-line="302" selection-start-column="55" selection-end-line="302" selection-end-column="55" />
+            <state relative-caret-position="420">
+              <caret line="310" lean-forward="true" selection-start-line="310" selection-end-line="310" />
             </state>
           </provider>
         </entry>
@@ -76,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tbd_client/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="33" column="40" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="40" />
+            <state relative-caret-position="547">
+              <caret line="40" column="45" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -110,6 +112,9 @@
       <replace>view</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -128,6 +133,7 @@
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -173,6 +179,7 @@
   <component name="PropertiesComponent">
     <property name="DBE.Init.BalloonShown" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -201,12 +208,12 @@
       <option name="presentableId" value="Default" />
       <updated>1576772347783</updated>
       <workItem from="1576772357424" duration="18455000" />
-      <workItem from="1576863972565" duration="951000" />
+      <workItem from="1576863972565" duration="1321000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19406000" />
+    <option name="totallyTimeSpent" value="19776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -316,13 +323,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tbd_client/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="33" column="40" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tbd_client/tbd_client/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -330,10 +330,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tbd_client/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="40" column="45" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tbd_client/client/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="302" column="55" lean-forward="true" selection-start-line="302" selection-start-column="55" selection-end-line="302" selection-end-column="55" />
+        <state relative-caret-position="420">
+          <caret line="310" lean-forward="true" selection-start-line="310" selection-end-line="310" />
         </state>
       </provider>
     </entry>

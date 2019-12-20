@@ -306,7 +306,7 @@ def view5(r):
 
     return render(r, 'view.html', {'row': row, 'columns': [], 'query': ''})
 
-def view5(r):
+def procedure1(r):
     cursor = connection.cursor()
 
     cursor.execute("delimiter //"
