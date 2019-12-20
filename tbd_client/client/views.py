@@ -161,10 +161,10 @@ def select2(r):
 def select3(r):
     cursor = connection.cursor()
 
-    cursor.execute('select dw as ddw, SUM("age") / COUNT(*) as mean_age '
-                   'from (select dd.Day_of_Week as dw, cc.Age_of_Casualty as age'
-                   ' FROM (date dd INNER JOIN Casualty cc on dd.Id = cc.Id)) '
-                   'group by ddw order by ddw ASC;')
+    cursor.execute("select dw as ddw, SUM('age') / COUNT(*) as mean_age "
+                   "from (select dd.Day_of_Week as dw, cc.Age_of_Casualty as age "
+                   "FROM (date dd INNER JOIN Casualty cc on dd.Id = cc.Id)) as cas "
+                   "group by ddw order by ddw ASC;")
 
     row = cursor.fetchall()
 
@@ -298,9 +298,11 @@ def view5(r):
     cursor.execute("create or replace view bad_story as "
                    "select vehicle_type, date, time, longitude, latitude"
                    " from date, location, vehicles group by date, time, longitude, latitude "
-                   "order by date, time, longitude, latitude limit 10;")
+                   "order by date, time, longitude, latitude")
 
-    cursor.execute("select * from bad_story limit 10;")
+    cursor.execute("select accident_index, ac "
+                   "from (select accident_index, count(*) as ac "
+                   "from accidents group by accident_index) as kk where ac > 1;")
 
     row = cursor.fetchall()
 
@@ -309,16 +311,14 @@ def view5(r):
 def procedure1(r):
     cursor = connection.cursor()
 
-    cursor.execute("delimiter // "
-                   "create procedure get_veh_info(type varchar(45)) "
+    cursor.execute("create procedure get_veh_info(type varchar(45)) "
                    "begin select vehicle_type, age_of_vehicle, casualty_type, "
                    "age_of_casualty, longitude, latitude, date, time, weather_conditions "
                    "from vehicles, casualty, accidents, date, location "
                    "where date.id = vehicles.id and date.id = accidents.id and date.id = casualty.id "
                    "and casualty.id = location.id and  INSTR(vehicle_type, type); "
-                   "end // "
-                   "delimiter; "
-                   "call get_veh_info('bus');")
+                   "call get_veh_info('bus');"
+                    )
 
     row = cursor.fetchall()
 
@@ -335,7 +335,9 @@ def procedure2(r):
                    "and date.id = accidents.id and age_of_vehicle = year_i and "
                    "INSTR(weather_conditions, weather); "
                    "end //"
-                   "call gismeteo(5, 'rain');")
+                   "delimiter //"
+                   "call gismeteo(5, 'rain');"
+                   "end //")
 
     row = cursor.fetchall()
 
